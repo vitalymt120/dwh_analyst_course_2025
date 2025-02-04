@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: source_1
+    schema:  public
+
+    tables:
+      - name: raw_customers
+        columns:
+          - name: id
+          - name: login
+          - name: email

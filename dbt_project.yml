@@ -38,3 +38,11 @@ models:
       +schema: dds
     marts:
       +schema: marts
+  test_project:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: table
+    stage:
+      +materialized: view
+      +tags:
+        - 'stage'
