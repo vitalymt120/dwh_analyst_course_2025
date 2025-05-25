@@ -1,1 +1,0 @@
-select * from {{source('source_1', 'raw_customers')}}

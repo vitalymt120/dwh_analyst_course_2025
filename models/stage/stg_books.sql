@@ -1,7 +1,5 @@
 select
-    book_id,
-    author,
-    title,
-    publication_yaer,
-    genre
+book_id,author,
+upper(title) as title
+,publication_yaer,genre
 from {{ref('raw_books')}}
