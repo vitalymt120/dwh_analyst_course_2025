@@ -1,0 +1,14 @@
+
+    
+    
+    
+    create table "dbt"."dbt"."raw_books" ("book_id" integer,"author" text,"title" text,"publication_yaer" date,"genre" text)
+  ;
+    -- dbt seed --
+    
+          insert into "dbt"."dbt"."raw_books" ("book_id", "author", "title", "publication_yaer", "genre") values
+          (%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s)
+      
+
+;
+  
