@@ -2,11 +2,12 @@ test_project:
   outputs:
     dev:
       type: postgres
-      threads: 4
-      host: postgres
+      host: localhost
       port: 5432
-      user: postgres
-      pass: postgres
-      dbname: dbt
-      schema: dbt
+      user: dbt
+      password: dbt_password
+      dbname: dwh_db
+      schema: analytics
+      threads: 4
+
   target: dev

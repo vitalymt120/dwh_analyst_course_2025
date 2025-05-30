@@ -1,5 +1,7 @@
-
 target/
 dbt_packages/
 logs/
-/.idea/
+.env
+*.pyc
+__pycache__/
+.DS_Store

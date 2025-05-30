@@ -1,17 +1,8 @@
-
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
-name: 'test_project'
+name: 'electro_dwh'
 version: '1.0.0'
-config-version: 2
 
-# This setting configures which "profile" dbt uses for this project.
 profile: 'test_project'
 
-# These configurations specify where dbt should look for different types of files.
-# The `model-paths` config, for example, states that models in this project can be
-# found in the "models/" directory. You probably won't need to change these!
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
@@ -19,20 +10,31 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-target-path: "target"  # directory which will store compiled SQL files
-clean-targets:         # directories to be removed by `dbt clean`
+clean-targets:
   - "target"
   - "dbt_packages"
 
+seeds:
+  electro_dwh:
+    +schema: stage
+    stage_products_from_1C:
+      +column_types:
+        price: numeric
+    stage_sales_from_amoCRM:
+      +column_types:
+        quantity: integer
+        price: numeric
+        total_amount: numeric
+    stage_suppliers_from_excel:
+      +column_types:
+        rating: numeric
 
-# Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
-
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
 models:
-  test_project:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+  electro_dwh:
+    +materialized: table
+    ods:
+      +schema: ods
+    dds:
+      +schema: dds
+    marts:
+      +schema: marts
