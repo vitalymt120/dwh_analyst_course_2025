@@ -1,0 +1,6 @@
+product_id,product_name,category,brand,price,supplier
+prod_001,iPhone 15 Pro,смартфон,Apple,100000,supp_001
+prod_002,Samsung Galaxy S25,смартфон,Samsung,80000,supp_002
+prod_003,MacBook Air,M1 ноутбук,Apple,130000,supp_003
+prod_004,Dell XPS 13,Windows ноутбук,Dell,150000,supp_004
+prod_005,Fitbit Ultra,фитнес-браслет,Fitbit,13000,supp_005

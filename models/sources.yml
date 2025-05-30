@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: amo_crm
+    database: dwh_db
+    schema: analytics
+    tables:
+      - name: sales_raw
+        identifier: stage_sales_from_amoCRM
+
+  - name: source_1c
+    database: dwh_db
+    schema: analytics
+    tables:
+      - name: products_raw
+        identifier: stage_products_from_1C
+
+  - name: file_storage
+    database: dwh_db
+    schema: analytics
+    tables:
+      - name: suppliers_raw
+        identifier: stage_suppliers_from_excel

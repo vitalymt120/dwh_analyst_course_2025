@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: facts_sales
+    description: "Таблица фактов продаж с расчетом прибыли и маржинальности"
+    columns:
+      - name: sale_id
+        description: "Уникальный идентификатор продажи"
+        tests:
+          - unique
+          - not_null
+      - name: total_amount
+        description: "Общая сумма продажи"
+        tests:
+          - not_null
+      - name: profit
+        description: "Прибыль от продажи"
+      - name: margin_percent
+        description: "Маржинальность в процентах"
+
+  - name: dim_products
+    description: "Справочник товаров"
+    columns:
+      - name: product_id
+        description: "Уникальный идентификатор товара"
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "Название товара"
+        tests:
+          - not_null
+
+  - name: dim_suppliers
+    description: "Справочник поставщиков"
+    columns:
+      - name: supplier_id
+        description: "Уникальный идентификатор поставщика"
+        tests:
+          - unique
+          - not_null
+      - name: supplier_name
+        description: "Название поставщика"
+        tests:
+          - not_null
+
+  - name: dim_clients
+    description: "Справочник клиентов"
+    columns:
+      - name: client_id
+        description: "Уникальный идентификатор клиента"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_storages
+    description: "Справочник складов"
+    columns:
+      - name: storage_id
+        description: "Уникальный идентификатор склада"
+        tests:
+          - unique
+          - not_null
+
+  - name: mart_product_profitability
+    description: "Витрина анализа прибыльности товаров"
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "total_revenue >= 0"
+
+  - name: mart_top_clients
+    description: "Витрина топ-10 клиентов по выручке"
+    
+  - name: mart_top_suppliers
+    description: "Витрина анализа поставщиков по выручке и прибыли"
+
+sources:
+  - name: stage_data
+    description: "Исходные данные из различных систем"
+    tables:
+      - name: seed_sales_from_amoCRM
+        description: "Данные о продажах из AmoCRM"
+      - name: seed_products_from_1C
+        description: "Данные о товарах из 1С"
+      - name: seed_suppliers_from_excel
+        description: "Данные о поставщиках из Excel файлов"

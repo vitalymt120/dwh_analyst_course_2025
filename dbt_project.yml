@@ -1,0 +1,48 @@
+name: 'electro_dwh'
+version: '1.0.0'
+
+profile: 'test_project'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  electro_dwh:
+    +schema: stage
+    stage_products_from_1C:
+      +column_types:
+        price: numeric
+    stage_sales_from_amoCRM:
+      +column_types:
+        quantity: integer
+        price: numeric
+        total_amount: numeric
+    stage_suppliers_from_excel:
+      +column_types:
+        rating: numeric
+
+models:
+  electro_dwh:
+    +materialized: table
+    ods:
+      +schema: ods
+    dds:
+      +schema: dds
+    marts:
+      +schema: marts
+  test_project:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: table
+    stage:
+      +materialized: view
+      +tags:
+        - 'stage'
