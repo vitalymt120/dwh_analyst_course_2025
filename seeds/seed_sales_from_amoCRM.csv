@@ -1,0 +1,4 @@
+sale_id,client_id,product_id,storage_id,supplier_id,sale_date,quantity,price,total_amount
+1,1001,prod_001,sto_001,supp_001,24.05.2025,2,100000,200000
+2,1002,prod_002,sto_002,supp_002,23.05.2025,1,80000,80000
+3,1003,prod_003,sto_003,supp_003,22.05.2025,3,130000,390000

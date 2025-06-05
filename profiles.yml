@@ -1,0 +1,13 @@
+test_project:
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      port: 5432
+      user: dbt
+      password: dbt_password
+      dbname: dwh_db
+      schema: analytics
+      threads: 4
+
+  target: dev
